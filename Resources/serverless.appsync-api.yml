@@ -1,0 +1,11 @@
+name: post-tutorial-api-${self:provider.stage}
+schema: schema.graphql
+authenticationType: API_KEY
+
+dataSources:
+  - type: NONE
+    name: NONE
+  - type: AMAZON_DYNAMODB
+    name: postTable
+    config:
+      tableName: !Ref PostTable

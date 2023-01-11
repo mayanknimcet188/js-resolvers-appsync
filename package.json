@@ -1,0 +1,16 @@
+{
+  "name": "js-resolvers-tutorial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "sls": "sls"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "serverless": "^3.26.0",
+    "serverless-appsync-plugin": "^1.14.0"
+  }
+}

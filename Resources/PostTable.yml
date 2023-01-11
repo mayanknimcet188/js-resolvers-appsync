@@ -1,0 +1,22 @@
+Type: AWS::DynamoDB::Table
+Properties:
+  BillingMode: PAY_PER_REQUEST
+  AttributeDefinitions:
+    - AttributeName: author
+      AttributeType: S
+  KeySchema:
+    - AttributeName: author
+      KeyType: HASH
+  GlobalSecondaryIndexes:
+    - IndexName: author-index
+      KeySchema:
+        - AttributeName: author
+          KeyType: HASH
+      Projection:
+        ProjectionType: ALL
+  TableName: post-tutorial-api-postTable-${self:provider.stage}
+  Tags:
+    - Key: Environment
+      Value: ${self:provider.stage}
+    - Key: Name
+      Value: post-tutorial-api-postTable-${self:provider.stage}

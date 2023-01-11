@@ -1,0 +1,35 @@
+service: js-resolvers
+frameworkVersion: "3"
+
+plugins:
+  - serverless-appsync-plugin
+
+provider:
+  name: aws
+  region: ${env:REGION, 'ap-southeast-1'}
+  stage: ${opt:stage, 'dev'}
+  runtime: nodejs16.x
+  memorySize: 1024
+  timeout: 30
+  environment:
+    REGION: ${self:provider.region}
+    SERVICE_NAME: ${self:service}-${self:provider.stage}
+    STAGE: ${self:provider.stage, 'dev'}
+
+custom:
+  appSync: ${file(./Resources/serverless.appsync-api.yml)}
+
+package:
+  individually: true
+  patterns:
+    - "!node_modules/**"
+    - "!package.json"
+
+# functions
+
+resources:
+  Resources:
+    PostTable: ${file(./Resources/PostTable.yml)}
+  Outputs:
+    PostTable:
+      Value: !Ref PostTable
