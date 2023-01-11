@@ -1,0 +1,1 @@
+### PoC for Using JS Pipeline Resolvers for AWS AppSync
